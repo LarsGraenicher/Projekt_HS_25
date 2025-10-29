@@ -1,0 +1,47 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+.app {
+  display: grid;
+  min-height: 100vh; /* full page */
+  grid-template-columns: 1fr 250px;
+  grid-template-rows: auto 1fr auto;
+}
+
+header {
+  grid-column: 1 / -1;
+  background: lightblue;
+}
+footer {
+  grid-column: 1 / -1;
+  background: lightblue;
+}
+aside {
+  background: lightgray;
+}
+main {
+  background: white;
+}
+
+#Logo {
+  width: 60px;
+}
+#title {
+  font-size: 50px;
+}
+button {
+  margin: 12px;
+  border: 1px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+}
+select {
+  margin: 12px;
+  background-color: #d1d1e0;
+  border: 1px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+}
