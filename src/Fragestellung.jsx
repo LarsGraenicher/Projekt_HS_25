@@ -20,7 +20,7 @@ export const Fragestellung = ({ setSeite }) => {
   }, [data]);
 
   useEffect(() => {
-    fetch("http://localhost:8000/v1/pedestrians_count?date=2024-12-10")
+    fetch("http://localhost:8000/v1/pedestrians_count?date=2024-12-15")
       .then((res) => res.json())
       .then((res) => setData(res));
   }, []);

@@ -3,14 +3,19 @@ import dayjs from "dayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { useState } from "react";
 
-export const Sidebar = () => {
-  const [date, setDate] = useState(dayjs("2024-04-21"));
-  const [richtung, setRichtung] = useState("keine");
-  const [wetter, setWetter] = useState("keine");
-  const [alter, setAlter] = useState("Alle");
-
+export const Sidebar = ({
+  date,
+  setDate,
+  richtung,
+  setRichtung,
+  wetter,
+  setWetter,
+  alter,
+  setAlter,
+  update,
+  setUpdate,
+}) => {
   return (
     <aside>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -18,6 +23,7 @@ export const Sidebar = () => {
           label="Datum auswählen"
           value={date}
           onChange={(newValue) => setDate(newValue)}
+          format="DD.MM.YYYY"
           minDate={dayjs("2021-09-28")}
           maxDate={dayjs("2025-07-30")}
         />
@@ -116,12 +122,23 @@ export const Sidebar = () => {
         </ToggleButton>
         <ToggleButton
           sx={{ height: 25 }}
-          onClick={() => setAlter("keine")}
-          selected={alter === "keine"}
+          onClick={() => setAlter("Alle")}
+          selected={alter === "Alle"}
         >
           Alle
         </ToggleButton>
       </ToggleButtonGroup>
+
+      <Button
+        variant="contained"
+        color="secondary"
+        style={{ marginTop: "16px" }}
+        fullWidth
+        size="large"
+        onClick={() => setUpdate(true)}
+      >
+        Daten aktualisieren
+      </Button>
 
       <Button
         variant="outlined"
@@ -129,6 +146,12 @@ export const Sidebar = () => {
         style={{ marginTop: "16px" }}
         fullWidth
         size="large"
+        onClick={() => {
+          setAlter("Alle");
+          setWetter("keine");
+          setRichtung("keine");
+          setDate(dayjs("2024-04-21"));
+        }}
       >
         Reset
       </Button>
