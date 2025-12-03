@@ -1,0 +1,70 @@
+{
+  "config": {
+    "view": {
+      "continuousWidth": 300,
+      "continuousHeight": 300
+    }
+  },
+  "data": {
+    "url": "mydata"
+  },
+  "mark": {
+    "type": "bar",
+    "size": 80
+  },
+  "encoding": {
+    "tooltip": [
+      {
+        "aggregate": "sum",
+        "field": "adult_pedestrians_count",
+        "title": "Anzahl Erwachsene insgesamt",
+        "type": "quantitative"
+      },
+      {
+        "aggregate": "sum",
+        "field": "adult_ltr_pedestrians_count",
+        "title": "Anzahl Erwachsene nach ltr",
+        "type": "quantitative"
+      }
+    ],
+    "x": {
+      "axis": {
+        "title": "Untersuchte Strassen",
+        "labelAngle": 0
+      },
+      "field": "location_name",
+      "type": "nominal"
+    },
+    "y": {
+      "aggregate": "mean",
+      "axis": {
+        "title": "Anteil der Erwachsenen die nach ltr geht",
+        "format": ".0%"
+      },
+      "field": "PercentOfadult_ltr_pedestrians",
+      "type": "quantitative"
+    }
+  },
+  "params": [
+    {
+      "name": "param_1",
+      "select": {
+        "type": "interval",
+        "encodings": [
+          "x",
+          "y"
+        ]
+      },
+      "bind": "scales"
+    }
+  ],
+  "title": "Nur im Teil der Bahnhofstrasse (Mitte) liefen am 21.04.2024 mehr Erwachsene in Richtung Hauptbahnhof",
+  "transform": [
+    {
+      "calculate": "datum.adult_ltr_pedestrians_count/datum.adult_pedestrians_count",
+      "as": "PercentOfadult_ltr_pedestrians"
+    }
+  ],
+  "width": 450,
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json"
+}
