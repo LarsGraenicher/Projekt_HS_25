@@ -4,10 +4,11 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { useEffect, useState } from "react";
+import dayjs from "dayjs";
 
 import fragestellung_json_spec from "./jsons/fragestellung_spec.json";
 
-export const Fragestellung = ({ setSeite }) => {
+export const Fragestellung = ({ setSeite, setDate, date }) => {
   const [data, setData] = useState([]);
   const [spec, setSpec] = useState(fragestellung_json_spec);
 
@@ -20,10 +21,19 @@ export const Fragestellung = ({ setSeite }) => {
   }, [data]);
 
   useEffect(() => {
-    fetch("http://localhost:8000/v1/pedestrians_count?date=2024-12-15")
+    const params = new URLSearchParams();
+
+    // Datum als ISO String (Tag extrahieren)
+    if (date) {
+      params.append("date", date.format("YYYY-MM-DD"));
+    }
+
+    fetch(
+      `http://localhost:8000/v1/fragestellung/pedestrians_count?${params.toString()}`
+    )
       .then((res) => res.json())
       .then((res) => setData(res));
-  }, []);
+  }, [date]);
 
   return (
     <div className="Fragestellung">
@@ -33,7 +43,14 @@ export const Fragestellung = ({ setSeite }) => {
       <div>
         Wie sieht es an Ihrem Geburtstag aus?
         <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <DatePicker label="Basic date picker" />
+          <DatePicker
+            label="Datum auswählen"
+            value={date}
+            onChange={(newValue) => setDate(newValue)}
+            format="DD.MM.YYYY"
+            minDate={dayjs("2021-09-28")}
+            maxDate={dayjs("2025-07-30")}
+          />
         </LocalizationProvider>
         <Button
           variant="outlined"

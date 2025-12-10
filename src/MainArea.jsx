@@ -10,11 +10,14 @@ export const MainArea = ({
   wetter,
   alter,
   update,
+  setDate,
 }) => {
   return (
     <main>
       {seite === "Startseite" && <Startseite />}
-      {seite === "Fragestellung" && <Fragestellung setSeite={setSeite} />}
+      {seite === "Fragestellung" && (
+        <Fragestellung setSeite={setSeite} date={date} setDate={setDate} />
+      )}
       {seite === "Erkundung" && (
         <Erkundung
           date={date}

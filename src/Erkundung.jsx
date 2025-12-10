@@ -25,7 +25,7 @@ export const Erkundung = ({ date, richtung, wetter, alter, update }) => {
 
     // Wetter nur senden, wenn nicht "keine"
     if (wetter && wetter !== "keine") {
-      params.append("weather", wetter);
+      params.append("weather_condition", wetter);
     }
 
     // Richtung nur senden, wenn nicht "keine"
@@ -38,7 +38,9 @@ export const Erkundung = ({ date, richtung, wetter, alter, update }) => {
       params.append("age_group", alter);
     }
 
-    fetch(`http://localhost:8000/v1/pedestrians_count?${params.toString()}`)
+    fetch(
+      `http://localhost:8000/v1/erkundung/pedestrians_count?${params.toString()}`
+    )
       .then((res) => res.json())
       .then((res) => setData(res));
   }, [date, richtung, wetter, alter]);

@@ -68,15 +68,15 @@ export const Sidebar = ({
         </ToggleButton>
         <ToggleButton
           sx={{ height: 25 }}
-          onClick={() => setWetter("Regen")}
-          selected={wetter === "Regen"}
+          onClick={() => setWetter("rain")}
+          selected={wetter === "rain"}
         >
           Regen
         </ToggleButton>
         <ToggleButton
           sx={{ height: 25 }}
-          onClick={() => setWetter("bewölkt")}
-          selected={wetter === "bewölkt"}
+          onClick={() => setWetter("cloudy")}
+          selected={wetter === "cloudy"}
         >
           bewölkt
         </ToggleButton>

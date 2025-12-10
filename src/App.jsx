@@ -27,6 +27,7 @@ export function App() {
         wetter={wetter}
         alter={alter}
         update={update}
+        setDate={setDate}
       ></MainArea>
       {seite === "Erkundung" && (
         <Sidebar

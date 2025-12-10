@@ -9,18 +9,14 @@ data= pd.read_csv(r"./src/Gesamtdatensatz.csv")
 
 
 
-origins = ["http://localhost:5173"]
+origins = ["http://localhost:5173", "http://localhost:5174"]
 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
 )
 
-
-
-@app.get("/v1/pedestrians_count")
-def erkundung(date: str = "2024-04-21", weather_condition: str | None = None, direction: str | None = None, age: str | None = None): #define a function that takes a name as a query parameter
-
+def date_filter(date):
     data_filtered=pd.DataFrame()
     for hour in range (24):
         dataframe_hour= data[(data['timestamp'] == f"{date}T{hour:02d}:00:00Z")]
@@ -78,33 +74,48 @@ def erkundung(date: str = "2024-04-21", weather_condition: str | None = None, di
 
     
         data_filtered=pd.concat([data_filtered, dataframe_hour])
-        
-        if weather_condition is not None:
-            if "weather_condition" in data_filtered.columns:
-                data_filtered = data_filtered[data_filtered["weather_condition"] == weather_condition]
-                
-        if direction is not None:
-            if direction.lower() == "bahnhof":
-        # Wir definieren: Richtung Bahnhof = rtl 
-                data_filtered["direction_label"] = data_filtered["rtl_label"]
-                data_filtered["direction_count"] = data_filtered["rtl_pedestrians_count"]
+    return data_filtered
 
-            elif direction.lower() in ["bürkliplatz", "uraniastrasse"]:
-        # Richtung Bürkliplatz/Uraniastrasse = ltr 
-                data_filtered["direction_label"] = data_filtered["ltr_label"]
-                data_filtered["direction_count"] = data_filtered["ltr_pedestrians_count"]
 
-                
-                
-        if age is not None:
-            if age == "Erwachsen":
-                data_filtered = data_filtered[
-                    data_filtered["adult_pedestrians_count"] > 0 #alle zeilen die mehr als 0 erwachsene haben
-                ]
-            elif age == "Kind":
-                data_filtered = data_filtered[
-                data_filtered["child_pedestrians_count"] > 0
+@app.get("/v1/fragestellung/pedestrians_count")
+def fragestellung(date: str = "2024-04-21"): #define a function that takes a name as a query parameter
+
+    data_fragestellung=date_filter(date).to_json( orient="records", indent=2) #orient="records", indent=2 orient ist dafür da um ein Array zu erhalten und nicht ein Dictionary, ident für bessere lesbarkeit nicht alles auf einer Zeile
+
+
+
+    return data_fragestellung
+
+@app.get("/v1/erkundung/pedestrians_count")
+def erkundung(date: str = "2024-04-21", weather_condition: str | None = None, direction: str | None = None, age: str | None = None): #define a function that takes a name as a query parameter
+    data_filtered=date_filter(date)
+    
+    if weather_condition is not None:
+        if "weather_condition" in data_filtered.columns:
+            data_filtered = data_filtered[data_filtered["weather_condition"] == weather_condition]
+            
+    if direction is not None:
+        if direction.lower() == "bahnhof":
+    # Wir definieren: Richtung Bahnhof = rtl 
+            data_filtered["direction_label"] = data_filtered["rtl_label"]
+            data_filtered["direction_count"] = data_filtered["rtl_pedestrians_count"]
+
+        elif direction.lower() in ["bürkliplatz", "uraniastrasse"]:
+    # Richtung Bürkliplatz/Uraniastrasse = ltr 
+            data_filtered["direction_label"] = data_filtered["ltr_label"]
+            data_filtered["direction_count"] = data_filtered["ltr_pedestrians_count"]
+
+            
+            
+    if age is not None:
+        if age == "Erwachsen":
+            data_filtered = data_filtered[
+                data_filtered["adult_pedestrians_count"] > 0 #alle zeilen die mehr als 0 erwachsene haben
             ]
+        elif age == "Kind":
+            data_filtered = data_filtered[
+            data_filtered["child_pedestrians_count"] > 0
+        ]
                 
                 
     data_fragestellung=data_filtered.to_json( orient="records", indent=2) #orient="records", indent=2 orient ist dafür da um ein Array zu erhalten und nicht ein Dictionary, ident für bessere lesbarkeit nicht alles auf einer Zeile
