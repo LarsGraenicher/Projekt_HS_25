@@ -23,9 +23,9 @@ export const Erkundung = ({ date, richtung, wetter, alter, update }) => {
       params.append("date", date.format("YYYY-MM-DD"));
     }
 
-    // Wetter nur senden, wenn nicht "keine"
-    if (wetter && wetter !== "keine") {
-      params.append("weather_condition", wetter);
+    // Wetter nur senden, wenn >0
+    if (wetter && wetter.length > 0) {
+      wetter.forEach((e) => params.append("weather_condition", e));
     }
 
     // Richtung nur senden, wenn nicht "keine"
@@ -34,7 +34,7 @@ export const Erkundung = ({ date, richtung, wetter, alter, update }) => {
     }
 
     // Altersgruppe nur senden, wenn nicht "Alle"
-    if (alter && alter !== "Alle") {
+    if (alter && alter !== "All") {
       params.append("age", alter);
     }
 
@@ -48,7 +48,15 @@ export const Erkundung = ({ date, richtung, wetter, alter, update }) => {
   return (
     <div className="Erkundung">
       <h2>Inhaltlicher Titel</h2>
-      <div>Hier kommt die Bombastische Visualisierung</div>
+      <h4>
+        Anzahl
+        {alter !== "Alle" && <> {alter}er </>}
+        {alter === "Alle" && <> aller Altersgruppen </>}
+        {wetter.length > 0 && <> bei {wetter[0]} Wetter </>}
+        {richtung !== "keine" && <> in Richtung {richtung} </>}
+        {date && <> am {date.format("DD.MM.YYYY")}</>}
+      </h4>
+
       <VegaEmbed spec={spec} />
     </div>
   );

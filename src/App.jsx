@@ -11,7 +11,7 @@ export function App() {
   const [zeit, setZeit] = useState("21.04.2024");
   const [date, setDate] = useState(dayjs("2024-04-21"));
   const [richtung, setRichtung] = useState("keine");
-  const [wetter, setWetter] = useState("keine");
+  const [wetter, setWetter] = useState([]);
   const [alter, setAlter] = useState("Alle");
   const [update, setUpdate] = useState(false);
 
