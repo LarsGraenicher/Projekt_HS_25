@@ -12,7 +12,7 @@ export const Header = ({ setSeite }) => {
         justifyContent: "space-between",
       }}
     >
-      <h1>Inhaltlicher Titel</h1>
+      <h1>Wie bewegen sich Personen in der Bahnhofstrasse?</h1>
       <Box
         sx={{
           display: "flex",
@@ -24,6 +24,7 @@ export const Header = ({ setSeite }) => {
         }}
       >
         <ButtonGroup
+          className="Navigation"
           variant="text"
           aria-label="Basic button group"
           color="grey"
@@ -33,7 +34,7 @@ export const Header = ({ setSeite }) => {
               setSeite("Startseite");
             }}
           >
-            Home
+            Übersicht
           </Button>
           <Button
             onClick={() => {

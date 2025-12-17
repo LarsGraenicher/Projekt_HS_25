@@ -10,7 +10,7 @@
   },
   "mark": {
     "type": "bar",
-    "size": 100
+    "size": 140
   },
   "encoding": {
     "color": {
@@ -35,23 +35,29 @@
     "x": {
       "axis": {
         "title": "Untersuchte Strassen",
-        "labelAngle": 0
+        "titleFontSize": 18,
+        "labelAngle": 0,
+        "labelFontSize": 16
       },
       "field": "location_name",
       "type": "nominal"
     },
     "y": {
       "axis": {
-        "title": "Anteil der Erwachsenen die nach ltr geht",
-        "format": ".0%"
+        "title": "Anteil der Erwachsenen die zum Bahnof gehen",
+        "titleFontSize": 18,
+        "format": ".0%",
+        "labelFontSize": 16,
+        "tickCount": 7
       },
       "field": "mean_percent",
       "type": "quantitative"
     }
   },
+  "height": 500,
   "params": [
     {
-      "name": "param_12",
+      "name": "param_15",
       "select": {
         "type": "interval",
         "encodings": [
@@ -105,6 +111,6 @@
       ]
     }
   ],
-  "width": 600,
+  "width": 800,
   "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json"
 }

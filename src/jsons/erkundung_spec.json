@@ -30,22 +30,28 @@
     "x": {
       "axis": {
         "title": "Untersuchte Strassen",
-        "labelAngle": 0
+        "titleFontSize": 18,
+        "labelAngle": 0,
+        "labelFontSize": 16
       },
       "field": "location_name",
       "type": "nominal"
     },
     "y": {
       "axis": {
-        "title": "Anzahl Personen"
+        "title": "Anzahl Personen",
+        "titleFontSize": 18,
+        "labelFontSize": 16,
+        "tickCount": 7
       },
       "field": "sum_daten",
       "type": "quantitative"
     }
   },
+  "height": 500,
   "params": [
     {
-      "name": "param_11",
+      "name": "param_3",
       "select": {
         "type": "interval",
         "encodings": [
@@ -85,6 +91,6 @@
       ]
     }
   ],
-  "width": 600,
+  "width": 800,
   "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json"
 }

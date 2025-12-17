@@ -14,7 +14,7 @@ export const MainArea = ({
 }) => {
   return (
     <main>
-      {seite === "Startseite" && <Startseite />}
+      {seite === "Startseite" && <Startseite setSeite={setSeite} />}
       {seite === "Fragestellung" && (
         <Fragestellung setSeite={setSeite} date={date} setDate={setDate} />
       )}

@@ -7,7 +7,7 @@ import { Footer } from "./Footer";
 import dayjs from "dayjs";
 
 export function App() {
-  const [seite, setSeite] = useState("Fragestellung");
+  const [seite, setSeite] = useState("Startseite");
   const [zeit, setZeit] = useState("21.04.2024");
   const [date, setDate] = useState(dayjs("2024-04-21"));
   const [richtung, setRichtung] = useState("keine");
