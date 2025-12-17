@@ -3,6 +3,11 @@ import dayjs from "dayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import WbSunnyIcon from "@mui/icons-material/WbSunny";
+import CloudIcon from "@mui/icons-material/Cloud";
+import GrainIcon from "@mui/icons-material/Grain";
+import AcUnitIcon from "@mui/icons-material/AcUnit";
+import FoggyIcon from "@mui/icons-material/FilterDrama";
 
 export const Sidebar = ({
   date,
@@ -42,8 +47,8 @@ export const Sidebar = ({
         </ToggleButton>
         <ToggleButton
           sx={{ height: 25 }}
-          onClick={() => setRichtung("Bürkliplatz/Uraniastrasse")}
-          selected={richtung === "Bürkliplatz/Uraniastrasse"}
+          onClick={() => setRichtung("bürkliplatz")}
+          selected={richtung === "bürkliplatz"}
         >
           Bürkliplatz/Uraniastrasse
         </ToggleButton>
@@ -61,43 +66,77 @@ export const Sidebar = ({
       <ToggleButtonGroup variant="contained" orientation="vertical" fullWidth>
         <ToggleButton
           sx={{ height: 25 }}
-          onClick={() => setWetter("Sonne/Klar")}
-          selected={wetter === "Sonne/Klar"}
+          onClick={() => setWetter(["clear-day", "clear-night", "wind"])}
+          selected={wetter.includes("clear-day")}
         >
+          <WbSunnyIcon
+            fontSize="small"
+            sx={{
+              mr: 0.5,
+              color: wetter.includes("clear-day") ? "orange" : "gray",
+            }}
+          />
           Sonne/Klar
         </ToggleButton>
         <ToggleButton
           sx={{ height: 25 }}
-          onClick={() => setWetter("rain")}
-          selected={wetter === "rain"}
+          onClick={() => setWetter(["rain"])}
+          selected={wetter.includes("rain")}
         >
+          <GrainIcon
+            fontSize="small"
+            sx={{ mr: 0.5, color: wetter.includes("rain") ? "blue" : "gray" }}
+          />
           Regen
         </ToggleButton>
         <ToggleButton
           sx={{ height: 25 }}
-          onClick={() => setWetter("cloudy")}
-          selected={wetter === "cloudy"}
+          onClick={() =>
+            setWetter(["cloudy", "partly-cloudy-day", "partly-cloudy-night"])
+          }
+          selected={wetter.includes("cloudy")}
         >
+          <CloudIcon
+            fontSize="small"
+            sx={{
+              mr: 0.5,
+              color: wetter.includes("cloudy") ? "lightgray" : "gray",
+            }}
+          />
           bewölkt
         </ToggleButton>
         <ToggleButton
           sx={{ height: 25 }}
-          onClick={() => setWetter("Sturm/Hagel")}
-          selected={wetter === "Sturm/Hagel"}
+          onClick={() => setWetter(["fog"])}
+          selected={wetter.includes("fog")}
         >
-          Sturm/Hagel
+          <FoggyIcon
+            fontSize="small"
+            sx={{
+              mr: 0.5,
+              color: wetter.includes("fog") ? "lightgray" : "gray",
+            }}
+          />
+          Nebel
         </ToggleButton>
         <ToggleButton
           sx={{ height: 25 }}
-          onClick={() => setWetter("Schnee")}
-          selected={wetter === "Schnee"}
+          onClick={() => setWetter(["snow"])}
+          selected={wetter.includes("snow")}
         >
+          <AcUnitIcon
+            fontSize="small"
+            sx={{
+              mr: 0.5,
+              color: wetter.includes("snow") ? "lightblue" : "gray",
+            }}
+          />
           Schnee
         </ToggleButton>
         <ToggleButton
           sx={{ height: 25 }}
-          onClick={() => setWetter("keine")}
-          selected={wetter === "keine"}
+          onClick={() => setWetter([])}
+          selected={wetter.length === 0}
         >
           keine
         </ToggleButton>
@@ -148,7 +187,7 @@ export const Sidebar = ({
         size="large"
         onClick={() => {
           setAlter("Alle");
-          setWetter("keine");
+          setWetter([]);
           setRichtung("keine");
           setDate(dayjs("2024-04-21"));
         }}
