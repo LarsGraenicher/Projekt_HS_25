@@ -122,9 +122,15 @@ def erkundung(date: str = "2024-04-21", weather_condition: str | None = None, di
         else:
             data_filtered=data_filtered.rename(columns={"ltr_pedestrians_count": "Daten"})
             
-    if direction is not None:
-        data_filtered = data_filtered.filter(["Daten", "location_name"])                
-                
+    else:
+        if age=="erwachsen":
+            data_filtered=data_filtered.rename(columns={"adult_pedestrians_count": "Daten"})
+        elif age=="kind":
+            data_filtered=data_filtered.rename(columns={"child_pedestrians_count": "Daten"})
+        else:
+            data_filtered=data_filtered.rename(columns={"pedestrians_count": "Daten"})  
+
+    data_filtered=data_filtered.filter(["Daten", "location_name"])    
                 
     data_Visualisierung=data_filtered.to_json( orient="records", indent=2) #orient="records", indent=2 orient ist dafür da um ein Array zu erhalten und nicht ein Dictionary, ident für bessere lesbarkeit nicht alles auf einer Zeile
 

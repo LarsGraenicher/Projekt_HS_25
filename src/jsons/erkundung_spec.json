@@ -22,8 +22,8 @@
     },
     "tooltip": [
       {
-        "field": "",
-        "title": "Anzahl Erwachsene insgesamt",
+        "field": "sum_daten",
+        "title": "Anzahl Personen:",
         "type": "quantitative"
       }
     ],
@@ -39,13 +39,13 @@
       "axis": {
         "title": "Anzahl Personen"
       },
-      "field": "Daten",
+      "field": "sum_daten",
       "type": "quantitative"
     }
   },
   "params": [
     {
-      "name": "param_1",
+      "name": "param_11",
       "select": {
         "type": "interval",
         "encodings": [

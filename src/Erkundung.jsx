@@ -35,7 +35,7 @@ export const Erkundung = ({ date, richtung, wetter, alter, update }) => {
 
     // Altersgruppe nur senden, wenn nicht "Alle"
     if (alter && alter !== "Alle") {
-      params.append("age_group", alter);
+      params.append("age", alter);
     }
 
     fetch(
