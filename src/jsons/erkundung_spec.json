@@ -10,20 +10,20 @@
   },
   "mark": {
     "type": "bar",
-    "size": 80
+    "size": 100
   },
   "encoding": {
+    "color": {
+      "condition": {
+        "test": "datum.rank == 1",
+        "value": "red"
+      },
+      "value": "lightgray"
+    },
     "tooltip": [
       {
-        "aggregate": "sum",
-        "field": "adult_pedestrians_count",
+        "field": "",
         "title": "Anzahl Erwachsene insgesamt",
-        "type": "quantitative"
-      },
-      {
-        "aggregate": "sum",
-        "field": "adult_ltr_pedestrians_count",
-        "title": "Anzahl Erwachsene nach ltr",
         "type": "quantitative"
       }
     ],
@@ -36,12 +36,10 @@
       "type": "nominal"
     },
     "y": {
-      "aggregate": "mean",
       "axis": {
-        "title": "Anteil der Erwachsenen die nach ltr geht",
-        "format": ".0%"
+        "title": "Anzahl Personen"
       },
-      "field": "PercentOfadult_ltr_pedestrians",
+      "field": "Daten",
       "type": "quantitative"
     }
   },
@@ -58,13 +56,35 @@
       "bind": "scales"
     }
   ],
-  "title": "Generieren Sie ihre eigene Visualsierung",
   "transform": [
     {
-      "calculate": "datum.adult_ltr_pedestrians_count/datum.adult_pedestrians_count",
-      "as": "PercentOfadult_ltr_pedestrians"
+      "aggregate": [
+        {
+          "op": "sum",
+          "field": "Daten",
+          "as": "sum_daten"
+        }
+      ],
+      "groupby": [
+        "location_name"
+      ]
+    },
+    {
+      "window": [
+        {
+          "op": "rank",
+          "field": "sum_daten",
+          "as": "rank"
+        }
+      ],
+      "sort": [
+        {
+          "field": "sum_daten",
+          "order": "descending"
+        }
+      ]
     }
   ],
-  "width": 450,
+  "width": 600,
   "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json"
 }
