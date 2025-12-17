@@ -37,7 +37,14 @@ export const Fragestellung = ({ setSeite, setDate, date }) => {
 
   return (
     <div className="Fragestellung">
-      <h2>Inhaltlicher Titel</h2>
+      <h2>
+        Prozentual liefen während des Zürich Marathons 2024 in der Zone
+        Bahnofstrasse (Mitte) am meisten Erwachsene in Richtung Hauptbahnhof
+      </h2>
+      <h4>
+        Prozentuale Angabe der Erwachsenen die in Richtung Hauptbahnhof gehen am{" "}
+        {date ? date.format("DD.MM.YYYY") : ""}
+      </h4>
 
       <VegaEmbed spec={spec} />
       <div>
