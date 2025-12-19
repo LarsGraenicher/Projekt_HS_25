@@ -45,6 +45,8 @@ export const Erkundung = ({ date, richtung, wetter, alter, update }) => {
       .then((res) => setData(res));
   }, [date, richtung, wetter, alter]);
 
+  console.log("Test" + Object.keys(data).length);
+
   return (
     <div className="Erkundung">
       <h2>Inhaltlicher Titel</h2>

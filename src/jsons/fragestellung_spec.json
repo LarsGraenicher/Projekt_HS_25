@@ -55,19 +55,6 @@
     }
   },
   "height": 500,
-  "params": [
-    {
-      "name": "param_15",
-      "select": {
-        "type": "interval",
-        "encodings": [
-          "x",
-          "y"
-        ]
-      },
-      "bind": "scales"
-    }
-  ],
   "transform": [
     {
       "calculate": "datum.adult_ltr_pedestrians_count/datum.adult_pedestrians_count",
