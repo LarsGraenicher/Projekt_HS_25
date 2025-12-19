@@ -13,7 +13,7 @@ body {
 
 header {
   grid-column: 1 / -1;
-  background: lightblue;
+  background: lightgray;
   padding-left: 10px;
 }
 footer {
@@ -42,11 +42,22 @@ main {
   margin-top: 16px !important;
   margin-bottom: 16px !important;
 } /* !important braucht es um die Voreinstellungen von Mui überschreiben zu können */
+.button_fragestellung {
+  margin-top: 16px !important;
+  margin-bottom: 16px !important;
+}
 .uebersicht {
   margin-top: 16px;
   margin-bottom: 16px;
   width: 50%;
   height: auto;
+}
+.text_fragestellung {
+  margin-top: 16px;
+}
+.erkundung_fehlermeldung {
+  color: red;
+  margin-bottom: 16px;
 }
 select {
   margin: 12px;

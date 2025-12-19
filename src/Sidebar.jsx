@@ -25,7 +25,9 @@ export const Sidebar = ({
         <DatePicker
           label="Datum auswählen"
           value={date}
-          onChange={(newValue) => setDate(newValue)}
+          onChange={(newValue) => {
+            setDate(newValue);
+          }}
           format="DD.MM.YYYY"
           minDate={dayjs("2021-09-28")}
           maxDate={dayjs("2025-07-30")}
@@ -38,21 +40,27 @@ export const Sidebar = ({
       <ToggleButtonGroup variant="contained" orientation="vertical" fullWidth>
         <ToggleButton
           sx={{ height: 25 }}
-          onClick={() => setRichtung("Bahnhof")}
+          onClick={() => {
+            setRichtung("Bahnhof");
+          }}
           selected={richtung === "Bahnhof"}
         >
           Bahnhof
         </ToggleButton>
         <ToggleButton
           sx={{ height: 25 }}
-          onClick={() => setRichtung("bürkliplatz")}
+          onClick={() => {
+            setRichtung("bürkliplatz");
+          }}
           selected={richtung === "bürkliplatz"}
         >
           Bürkliplatz/Uraniastrasse
         </ToggleButton>
         <ToggleButton
           sx={{ height: 25 }}
-          onClick={() => setRichtung("keine")}
+          onClick={() => {
+            setRichtung("keine");
+          }}
           selected={richtung === "keine"}
         >
           keine
@@ -64,7 +72,9 @@ export const Sidebar = ({
       <ToggleButtonGroup variant="contained" orientation="vertical" fullWidth>
         <ToggleButton
           sx={{ height: 25 }}
-          onClick={() => setWetter(["clear-day", "clear-night", "wind"])}
+          onClick={() => {
+            setWetter(["clear-day", "clear-night", "wind"]);
+          }}
           selected={wetter.includes("clear-day")}
         >
           <WbSunnyIcon
@@ -78,7 +88,9 @@ export const Sidebar = ({
         </ToggleButton>
         <ToggleButton
           sx={{ height: 25 }}
-          onClick={() => setWetter(["rain"])}
+          onClick={() => {
+            setWetter(["rain"]);
+          }}
           selected={wetter.includes("rain")}
         >
           <GrainIcon
@@ -89,9 +101,9 @@ export const Sidebar = ({
         </ToggleButton>
         <ToggleButton
           sx={{ height: 25 }}
-          onClick={() =>
-            setWetter(["cloudy", "partly-cloudy-day", "partly-cloudy-night"])
-          }
+          onClick={() => {
+            setWetter(["cloudy", "partly-cloudy-day", "partly-cloudy-night"]);
+          }}
           selected={wetter.includes("cloudy")}
         >
           <CloudIcon
@@ -105,7 +117,9 @@ export const Sidebar = ({
         </ToggleButton>
         <ToggleButton
           sx={{ height: 25 }}
-          onClick={() => setWetter(["fog"])}
+          onClick={() => {
+            setWetter(["fog"]);
+          }}
           selected={wetter.includes("fog")}
         >
           <FoggyIcon
@@ -119,7 +133,9 @@ export const Sidebar = ({
         </ToggleButton>
         <ToggleButton
           sx={{ height: 25 }}
-          onClick={() => setWetter(["snow"])}
+          onClick={() => {
+            setWetter(["snow"]);
+          }}
           selected={wetter.includes("snow")}
         >
           <AcUnitIcon
@@ -133,7 +149,9 @@ export const Sidebar = ({
         </ToggleButton>
         <ToggleButton
           sx={{ height: 25 }}
-          onClick={() => setWetter([])}
+          onClick={() => {
+            setWetter([]);
+          }}
           selected={wetter.length === 0}
         >
           keine
@@ -145,7 +163,9 @@ export const Sidebar = ({
       <ToggleButtonGroup variant="contained" orientation="vertical" fullWidth>
         <ToggleButton
           sx={{ height: 25 }}
-          onClick={() => setAlter("Kind")}
+          onClick={() => {
+            setAlter("Kind");
+          }}
           selected={alter === "Kind"}
         >
           Kind
@@ -159,7 +179,9 @@ export const Sidebar = ({
         </ToggleButton>
         <ToggleButton
           sx={{ height: 25 }}
-          onClick={() => setAlter("Alle")}
+          onClick={() => {
+            setAlter("Alle");
+          }}
           selected={alter === "Alle"}
         >
           Alle

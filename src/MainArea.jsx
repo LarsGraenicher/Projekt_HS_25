@@ -10,12 +10,24 @@ export const MainArea = ({
   wetter,
   alter,
   setDate,
+  laden,
+  setLaden,
+  error,
+  setError,
 }) => {
   return (
     <main>
       {seite === "Startseite" && <Startseite setSeite={setSeite} />}
       {seite === "Fragestellung" && (
-        <Fragestellung setSeite={setSeite} date={date} setDate={setDate} />
+        <Fragestellung
+          setSeite={setSeite}
+          date={date}
+          setDate={setDate}
+          laden={laden}
+          setLaden={setLaden}
+          error={error}
+          setError={setError}
+        />
       )}
       {seite === "Erkundung" && (
         <Erkundung
@@ -23,6 +35,10 @@ export const MainArea = ({
           richtung={richtung}
           wetter={wetter}
           alter={alter}
+          laden={laden}
+          setLaden={setLaden}
+          error={error}
+          setError={setError}
         />
       )}
     </main>

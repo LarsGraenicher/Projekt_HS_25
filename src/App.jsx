@@ -13,6 +13,8 @@ export function App() {
   const [richtung, setRichtung] = useState("keine");
   const [wetter, setWetter] = useState([]);
   const [alter, setAlter] = useState("Alle");
+  const [laden, setLaden] = useState(0);
+  const [error, setError] = useState("");
 
   return (
     <div className="app">
@@ -26,6 +28,10 @@ export function App() {
         wetter={wetter}
         alter={alter}
         setDate={setDate}
+        laden={laden}
+        setLaden={setLaden}
+        error={error}
+        setError={setError}
       ></MainArea>
       {seite === "Erkundung" && (
         <Sidebar

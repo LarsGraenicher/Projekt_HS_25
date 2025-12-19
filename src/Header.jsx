@@ -6,7 +6,6 @@ export const Header = ({ setSeite }) => {
   return (
     <header
       style={{
-        backgroundColor: "#d1d1e0",
         display: "flex",
         flexDirection: "row",
         justifyContent: "space-between",
