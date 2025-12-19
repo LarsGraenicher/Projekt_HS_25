@@ -9,7 +9,6 @@ export const MainArea = ({
   richtung,
   wetter,
   alter,
-  update,
   setDate,
 }) => {
   return (
@@ -24,7 +23,6 @@ export const MainArea = ({
           richtung={richtung}
           wetter={wetter}
           alter={alter}
-          update={update}
         />
       )}
     </main>

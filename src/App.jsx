@@ -13,7 +13,6 @@ export function App() {
   const [richtung, setRichtung] = useState("keine");
   const [wetter, setWetter] = useState([]);
   const [alter, setAlter] = useState("Alle");
-  const [update, setUpdate] = useState(false);
 
   return (
     <div className="app">
@@ -26,7 +25,6 @@ export function App() {
         richtung={richtung}
         wetter={wetter}
         alter={alter}
-        update={update}
         setDate={setDate}
       ></MainArea>
       {seite === "Erkundung" && (
@@ -41,8 +39,6 @@ export function App() {
           setWetter={setWetter}
           alter={alter}
           setAlter={setAlter}
-          update={update}
-          setUpdate={setUpdate}
         ></Sidebar>
       )}
       <Footer>Footer</Footer>

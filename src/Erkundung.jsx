@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 import erkundung_json_spec from "./jsons/erkundung_spec.json";
 
-export const Erkundung = ({ date, richtung, wetter, alter, update }) => {
+export const Erkundung = ({ date, richtung, wetter, alter }) => {
   const [data, setData] = useState([]);
   const [spec, setSpec] = useState(erkundung_json_spec);
 
@@ -34,7 +34,7 @@ export const Erkundung = ({ date, richtung, wetter, alter, update }) => {
     }
 
     // Altersgruppe nur senden, wenn nicht "Alle"
-    if (alter && alter !== "All") {
+    if (alter && alter !== "Alle") {
       params.append("age", alter);
     }
 
@@ -49,16 +49,31 @@ export const Erkundung = ({ date, richtung, wetter, alter, update }) => {
 
   return (
     <div className="Erkundung">
-      <h2>Inhaltlicher Titel</h2>
+      <h2>Erkundungsvisualisierung zum selbst endecken</h2>
       <h4>
         Anzahl
         {alter !== "Alle" && <> {alter}er </>}
         {alter === "Alle" && <> aller Altersgruppen </>}
-        {wetter.length > 0 && <> bei {wetter[0]} Wetter </>}
-        {richtung !== "keine" && <> in Richtung {richtung} </>}
-        {date && <> am {date.format("DD.MM.YYYY")}</>}
+        {wetter.length > 0 && (
+          <>
+            bei{" "}
+            {
+              {
+                fog: "Nebel",
+                rain: "Regen",
+                cloudy: "bewölktem Wetter",
+                "clear-day": "sonnigem / klarem Wetter",
+                snow: "Schnee",
+                wind: "Wind",
+              }[wetter[0]]
+            }{" "}
+          </>
+        )}
+        {richtung !== "keine" && <> in Richtung </>}
+        {richtung === "Bahnhof" && <>{richtung} </>}
+        {richtung === "bürkliplatz" && <>Bürkliplatz/Uraniastrasse </>}
+        {date && <>am {date.format("DD.MM.YYYY")}</>}
       </h4>
-
       <VegaEmbed spec={spec} />
     </div>
   );

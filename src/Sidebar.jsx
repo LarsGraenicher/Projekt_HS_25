@@ -18,8 +18,6 @@ export const Sidebar = ({
   setWetter,
   alter,
   setAlter,
-  update,
-  setUpdate,
 }) => {
   return (
     <aside>
@@ -167,17 +165,6 @@ export const Sidebar = ({
           Alle
         </ToggleButton>
       </ToggleButtonGroup>
-
-      <Button
-        variant="contained"
-        color="secondary"
-        style={{ marginTop: "16px" }}
-        fullWidth
-        size="large"
-        onClick={() => setUpdate(true)}
-      >
-        Daten aktualisieren
-      </Button>
 
       <Button
         variant="outlined"
