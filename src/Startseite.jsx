@@ -9,7 +9,7 @@ export const Startseite = ({ setSeite }) => {
         den Zürich HB?
       </h2>
       <div>
-        Dies war die Fragestellung für diese Website mit untenstehendem Knopf
+        Dies war die Fragestellung für diese Website. Mit untenstehendem Knopf
         gelangen Sie direkt zum Resultat:
       </div>
 

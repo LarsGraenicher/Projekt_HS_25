@@ -73,19 +73,20 @@ export const Sidebar = ({
         <ToggleButton
           sx={{ height: 25 }}
           onClick={() => {
-            setWetter(["clear-day", "clear-night", "wind"]);
+            setWetter(["clear"]);
           }}
-          selected={wetter.includes("clear-day")}
+          selected={wetter.includes("clear")}
         >
           <WbSunnyIcon
             fontSize="small"
             sx={{
               mr: 0.5,
-              color: wetter.includes("clear-day") ? "orange" : "gray",
+              color: wetter.includes("clear") ? "orange" : "gray",
             }}
           />
           Sonne/Klar
         </ToggleButton>
+
         <ToggleButton
           sx={{ height: 25 }}
           onClick={() => {
@@ -99,10 +100,11 @@ export const Sidebar = ({
           />
           Regen
         </ToggleButton>
+
         <ToggleButton
           sx={{ height: 25 }}
           onClick={() => {
-            setWetter(["cloudy", "partly-cloudy-day", "partly-cloudy-night"]);
+            setWetter(["cloudy"]);
           }}
           selected={wetter.includes("cloudy")}
         >
@@ -115,6 +117,7 @@ export const Sidebar = ({
           />
           bewölkt
         </ToggleButton>
+
         <ToggleButton
           sx={{ height: 25 }}
           onClick={() => {
@@ -131,6 +134,7 @@ export const Sidebar = ({
           />
           Nebel
         </ToggleButton>
+
         <ToggleButton
           sx={{ height: 25 }}
           onClick={() => {
@@ -147,6 +151,7 @@ export const Sidebar = ({
           />
           Schnee
         </ToggleButton>
+
         <ToggleButton
           sx={{ height: 25 }}
           onClick={() => {

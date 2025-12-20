@@ -72,7 +72,7 @@ export const Fragestellung = ({
         <VegaEmbed spec={spec} />
         <div>
           <div className="text_fragestellung">
-            Möchten Sie wissen wie es an Ihrem Geburtstag aussieht? (Geben Sie
+            Möchten Sie wissen wie es an Ihrem Geburtstag aussah? (Geben Sie
             bitte ein Datum an)
           </div>
           <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -102,7 +102,7 @@ export const Fragestellung = ({
           >
             Zur Erkundung
           </Button>
-          <div>Für die zu Ordnung der Gebiete sehen Sie Abbildung unten:</div>
+          <div>Für die Zuordnung der Gebiete sehen Sie Abbildung unten:</div>
           <img src={Uebersicht} className="uebersicht" />
         </div>
       </div>

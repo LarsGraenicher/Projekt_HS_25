@@ -7,6 +7,20 @@ app = FastAPI()
 
 data= pd.read_csv(r"./src/Gesamtdatensatz.csv")
 
+mapping = {
+    "cloudy": "cloudy",
+    "partly-cloudy-day": "cloudy",
+    "partly-cloudy-night": "cloudy",
+    "clear-day": "clear",
+    "clear-night": "clear",
+    "wind": "clear",
+    "rain": "rain",
+    "snow": "snow",
+    "fog": "fog",
+}
+
+data["weather_condition"] = data["weather_condition"].map(mapping)
+
 
 
 origins = ["http://localhost:5173", "http://localhost:5174"]

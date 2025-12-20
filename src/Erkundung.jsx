@@ -71,7 +71,7 @@ export const Erkundung = ({
   if (laden === 0)
     return (
       <div className="Erkundung">
-        <h2>Erkundungsvisualisierung zum selbst endecken</h2>
+        <h2>Erkundungsvisualisierung zum selbst entdecken</h2>
         <h4>
           Anzahl
           {alter !== "Alle" && <> {alter}er </>}
@@ -84,7 +84,7 @@ export const Erkundung = ({
                   fog: "Nebel",
                   rain: "Regen",
                   cloudy: "bewölktem Wetter",
-                  "clear-day": "sonnigem / klarem Wetter",
+                  clear: "sonnigem / klarem Wetter",
                   snow: "Schnee",
                   wind: "Wind",
                 }[wetter[0]]
@@ -98,7 +98,7 @@ export const Erkundung = ({
         </h4>
         <div>Daten werden geladen!</div>
         <VegaEmbed spec={spec} />
-        <div>Für die zu Ordnung der Gebiete sehen Sie Abbildung unten:</div>
+        <div>Für die Zuordnung der Gebiete sehen Sie Abbildung unten:</div>
         <img src={Uebersicht} className="uebersicht" />
       </div>
     );
@@ -111,7 +111,7 @@ export const Erkundung = ({
     return (
       <div className="Erkundung">
         <div>{error}</div>
-        <h2>Erkundungsvisualisierung zum selbst endecken</h2>
+        <h2>Erkundungsvisualisierung zum selbst entdecken</h2>
         <h4>
           Anzahl
           {alter !== "Alle" && <> {alter}er </>}
@@ -124,7 +124,7 @@ export const Erkundung = ({
                   fog: "Nebel",
                   rain: "Regen",
                   cloudy: "bewölktem Wetter",
-                  "clear-day": "sonnigem / klarem Wetter",
+                  clear: "sonnigem / klarem Wetter",
                   snow: "Schnee",
                   wind: "Wind",
                 }[wetter[0]]
@@ -139,7 +139,7 @@ export const Erkundung = ({
         <div className="erkundung_fehlermeldung">
           Für diese Einstellungen sind keine Daten vorhanden.
         </div>
-        <div>Für die zu Ordnung der Gebiete sehen Sie Abbildung unten:</div>
+        <div>Für die Zuordnung der Gebiete sehen Sie Abbildung unten:</div>
         <img src={Uebersicht} className="uebersicht" />
       </div>
     );
@@ -168,7 +168,7 @@ export const Erkundung = ({
                 fog: "Nebel",
                 rain: "Regen",
                 cloudy: "bewölktem Wetter",
-                "clear-day": "sonnigem / klarem Wetter",
+                clear: "sonnigem / klarem Wetter",
                 snow: "Schnee",
                 wind: "Wind",
               }[wetter[0]]
@@ -191,7 +191,7 @@ export const Erkundung = ({
         )}
       </h4>
       <VegaEmbed spec={spec} />
-      <div>Für die zu Ordnung der Gebiete sehen Sie Abbildung unten:</div>
+      <div>Für die Zuordnung der Gebiete sehen Sie Abbildung unten:</div>
       <img src={Uebersicht} className="uebersicht" />
     </div>
   );
