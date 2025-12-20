@@ -1,11 +1,3 @@
-Finalisierung:
-
-- Die Applikation ist in einer README.md-Datei auf GitHub beschrieben, sodass auch
-  Aussenstehende (z.B. Dozierende) den Inhalt und Fokus des Projekts verstehen.
-- Mithilfe der in der README.md angegebenen Informationen (Anweisungen, Befehle)
-  können Aussenstehende (z.B. Dozierende) Frontend und Backend als Prozess(e) auf
-  “localhost” starten und die App(s) testen.
-
 ##
 
 # Fokus:
