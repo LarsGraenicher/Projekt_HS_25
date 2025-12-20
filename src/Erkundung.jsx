@@ -118,14 +118,16 @@ export const Erkundung = ({
           </div>
         )}
       </h4>
-      {laden === 0 && <div className="ladeMeldung">Daten werden geladen!</div>}
-      {data.length === 0 ? (
+      {laden === 0 ? (
+        <div className="ladeMeldung">Daten werden geladen!</div>
+      ) : data.length === 0 ? (
         <div className="erkundung_fehlermeldung">
           Für diese Einstellungen sind keine Daten vorhanden.
         </div>
       ) : (
         <VegaEmbed spec={spec} />
       )}
+
       <div>Für die Zuordnung der Gebiete sehen Sie Abbildung unten:</div>
       <img src={Uebersicht} className="uebersicht" />
     </div>
