@@ -57,57 +57,6 @@ export const Fragestellung = ({
       });
   }, [date]);
 
-  if (laden === 0)
-    return (
-      <div className="Fragestellung">
-        <h2>
-          Prozentual liefen während des Zürich Marathons 2024 in der Zone
-          Bahnofstrasse (Mitte) am meisten Erwachsene in Richtung Hauptbahnhof
-        </h2>
-        <h4>
-          Prozentuale Angabe der Erwachsenen die in Richtung Hauptbahnhof gehen
-          am {date ? date.format("DD.MM.YYYY") : ""}
-        </h4>
-        <div>Daten werden geladen!</div>
-        <VegaEmbed spec={spec} />
-        <div>
-          <div className="text_fragestellung">
-            Möchten Sie wissen wie es an Ihrem Geburtstag aussah? (Geben Sie
-            bitte ein Datum an)
-          </div>
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DatePicker
-              className="button_fragestellung"
-              label="Datum auswählen"
-              value={date}
-              onChange={(newValue) => {
-                setDate(newValue);
-                setLaden(0);
-              }}
-              format="DD.MM.YYYY"
-              minDate={dayjs("2021-09-28")}
-              maxDate={dayjs("2025-07-30")}
-            />
-          </LocalizationProvider>
-          <div>
-            Möchten Sie noch andere Einsellungen für den Datensatz ausprobieren,
-            klicken sie unten:
-          </div>
-          <Button
-            className="button_fragestellung"
-            variant="contained"
-            onClick={() => {
-              setSeite("Erkundung");
-            }}
-          >
-            Zur Erkundung
-          </Button>
-          <div>Für die Zuordnung der Gebiete sehen Sie Abbildung unten:</div>
-          <img src={Uebersicht} className="uebersicht" />
-        </div>
-      </div>
-    );
-
   if (error !== "") {
     return <div>Fehler: {error}</div>;
   }
@@ -122,7 +71,7 @@ export const Fragestellung = ({
         Prozentuale Angabe der Erwachsenen die in Richtung Hauptbahnhof gehen am{" "}
         {date ? date.format("DD.MM.YYYY") : ""}
       </h4>
-
+      {laden === 0 && <div className="ladeMeldung">Daten werden geladen!</div>}
       <VegaEmbed spec={spec} />
       <div>
         <div className="text_fragestellung">

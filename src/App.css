@@ -59,6 +59,9 @@ main {
   color: red;
   margin-bottom: 16px;
 }
+.ladeMeldung {
+  color: orange;
+}
 select {
   margin: 12px;
   background-color: #d1d1e0;

@@ -68,82 +68,10 @@ export const Erkundung = ({
       });
   }, [date, richtung, wetter, alter]);
 
-  if (laden === 0)
-    return (
-      <div className="Erkundung">
-        <h2>Erkundungsvisualisierung zum selbst entdecken</h2>
-        <h4>
-          Anzahl
-          {alter !== "Alle" && <> {alter}er </>}
-          {alter === "Alle" && <> aller Altersgruppen </>}
-          {wetter.length > 0 && (
-            <>
-              bei{" "}
-              {
-                {
-                  fog: "Nebel",
-                  rain: "Regen",
-                  cloudy: "bewölktem Wetter",
-                  clear: "sonnigem / klarem Wetter",
-                  snow: "Schnee",
-                  wind: "Wind",
-                }[wetter[0]]
-              }{" "}
-            </>
-          )}
-          {richtung !== "keine" && <> in Richtung </>}
-          {richtung === "Bahnhof" && <>{richtung} </>}
-          {richtung === "bürkliplatz" && <>Bürkliplatz/Uraniastrasse </>}
-          {date && <>am {date.format("DD.MM.YYYY")}</>}
-        </h4>
-        <div>Daten werden geladen!</div>
-        <VegaEmbed spec={spec} />
-        <div>Für die Zuordnung der Gebiete sehen Sie Abbildung unten:</div>
-        <img src={Uebersicht} className="uebersicht" />
-      </div>
-    );
-
   if (error !== "") {
     return <div>Fehler: {error}</div>;
   }
 
-  if (data.length === 0) {
-    return (
-      <div className="Erkundung">
-        <div>{error}</div>
-        <h2>Erkundungsvisualisierung zum selbst entdecken</h2>
-        <h4>
-          Anzahl
-          {alter !== "Alle" && <> {alter}er </>}
-          {alter === "Alle" && <> aller Altersgruppen </>}
-          {wetter.length > 0 && (
-            <>
-              bei{" "}
-              {
-                {
-                  fog: "Nebel",
-                  rain: "Regen",
-                  cloudy: "bewölktem Wetter",
-                  clear: "sonnigem / klarem Wetter",
-                  snow: "Schnee",
-                  wind: "Wind",
-                }[wetter[0]]
-              }{" "}
-            </>
-          )}
-          {richtung !== "keine" && <> in Richtung </>}
-          {richtung === "Bahnhof" && <>{richtung} </>}
-          {richtung === "bürkliplatz" && <>Bürkliplatz/Uraniastrasse </>}
-          {date && <>am {date.format("DD.MM.YYYY")}</>}
-        </h4>
-        <div className="erkundung_fehlermeldung">
-          Für diese Einstellungen sind keine Daten vorhanden.
-        </div>
-        <div>Für die Zuordnung der Gebiete sehen Sie Abbildung unten:</div>
-        <img src={Uebersicht} className="uebersicht" />
-      </div>
-    );
-  }
   //ausgeben wie viele Stunden in den gelieferten Daten sind
   const anzahlgelieferteStunden = data.length / 4;
 
@@ -190,7 +118,14 @@ export const Erkundung = ({
           </div>
         )}
       </h4>
-      <VegaEmbed spec={spec} />
+      {laden === 0 && <div className="ladeMeldung">Daten werden geladen!</div>}
+      {data.length === 0 ? (
+        <div className="erkundung_fehlermeldung">
+          Für diese Einstellungen sind keine Daten vorhanden.
+        </div>
+      ) : (
+        <VegaEmbed spec={spec} />
+      )}
       <div>Für die Zuordnung der Gebiete sehen Sie Abbildung unten:</div>
       <img src={Uebersicht} className="uebersicht" />
     </div>
